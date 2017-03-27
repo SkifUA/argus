@@ -1,0 +1,8 @@
+<div class="products">
+  <div class="container">
+  <h1>Index</h1>
+    <% @products.each do |product| %>
+        <%= render 'product', product: product %>
+    <% end %>
+  </div>
+</div>
