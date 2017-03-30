@@ -5,6 +5,13 @@ Rails.application.routes.draw do
 
   get 'products/:id', to: 'products#show', as: 'product'
 
+  get '/signup' => 'users#new'
+  resources :users
+
+  get '/login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
   namespace :admin do
     resources :products
     resources :users
