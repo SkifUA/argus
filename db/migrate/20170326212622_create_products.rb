@@ -13,9 +13,10 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :passport
       t.string :certificate
       t.integer :brand_id
-      t.integer :purveyor_id
-      t.integer :type_id
-      t.integer :kind_id
+      t.belongs_to :brand, index: true
+      t.belongs_to :purveyor, index: true
+      t.belongs_to :type, index: true
+      t.belongs_to :kind, index: true
       t.timestamps
     end
   end

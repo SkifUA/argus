@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330201707) do
+ActiveRecord::Schema.define(version: 20170331211226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 20170330201707) do
     t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_administrators_on_user_id", using: :btree
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "kinds", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -40,6 +57,26 @@ ActiveRecord::Schema.define(version: 20170330201707) do
     t.integer  "kind_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
+    t.index ["kind_id"], name: "index_products_on_kind_id", using: :btree
+    t.index ["purveyor_id"], name: "index_products_on_purveyor_id", using: :btree
+    t.index ["type_id"], name: "index_products_on_type_id", using: :btree
+  end
+
+  create_table "purveyors", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|
