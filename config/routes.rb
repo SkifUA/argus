@@ -19,5 +19,11 @@ Rails.application.routes.draw do
     resources :purveyors
     resources :brands
     resources :types
+    resources :comments
   end
+
+  get '/comments/new', to: 'comment#new'
+  post 'comments', to: 'comment#create'
+  get '/comments/:id/edit', to: 'comment#edit', as: 'comments_edit'
+
 end
