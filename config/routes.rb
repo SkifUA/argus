@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'products#index'
+  root to: 'products#index'
 
   get 'products/:id', to: 'products#show', as: 'product'
 
@@ -20,10 +20,11 @@ Rails.application.routes.draw do
     resources :brands
     resources :types
     resources :comments
+    root to: 'products#index'
   end
 
-  get '/comments/new', to: 'comment#new'
-  post 'comments', to: 'comment#create'
-  get '/comments/:id/edit', to: 'comment#edit', as: 'comments_edit'
+  get '/comments/new', to: 'comments#new'
+  post 'comments', to: 'comments#create'
+  get '/comments/:id/edit', to: 'comments#edit', as: 'comments_edit'
 
 end
