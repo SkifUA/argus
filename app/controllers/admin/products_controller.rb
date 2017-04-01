@@ -1,4 +1,7 @@
 class Admin::ProductsController < ApplicationController
+
+  before_action :require_admin
+
   def index
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end

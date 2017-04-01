@@ -1,4 +1,7 @@
 class Admin::TypesController < ApplicationController
+
+  before_action :require_admin
+
   def index
 
   end

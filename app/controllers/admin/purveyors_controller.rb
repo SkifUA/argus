@@ -1,4 +1,7 @@
 class Admin::PurveyorsController < ApplicationController
+
+  before_action :require_admin
+
   def index
 
   end
