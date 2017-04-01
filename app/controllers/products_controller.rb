@@ -6,6 +6,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
-    @comments = Comment.find_by_product_id(params[:id]).order('created_at DESK')
+    @comments = Comment.where(user_id: params[:id]).order(created_at: :desc)
   end
 end
