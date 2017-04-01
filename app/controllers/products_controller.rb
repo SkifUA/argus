@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find params[:id]
+    @comments = Comment.find_by_product_id(params[:id]).order('created_at DESK')
   end
 end
