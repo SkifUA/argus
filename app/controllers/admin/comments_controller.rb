@@ -1,5 +1,3 @@
-class Admin::CommentsController < ApplicationController
-
-  before_action :require_admin
+class Admin::CommentsController < Admin::BaseController
 
 end

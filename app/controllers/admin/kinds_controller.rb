@@ -1,6 +1,4 @@
-class Admin::KindsController < ApplicationController
-
-  before_action :require_admin
+class Admin::KindsController < Admin::BaseController
 
   def index
 

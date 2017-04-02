@@ -1,6 +1,4 @@
-class Admin::PurveyorsController < ApplicationController
-
-  before_action :require_admin
+class Admin::PurveyorsController < Admin::BaseController
 
   def index
 

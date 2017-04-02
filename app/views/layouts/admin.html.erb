@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin argus</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="container">
+    <%= link_to(root_path) do %>
+        <h1><span class="dark"></span>Admin</h1>
+    <% end %>
+
+    <div class="nav">
+
+      <% if admin? %>
+          <ul>
+            <li><%= current_user.email %></li>
+
+            <li><%= link_to "Admin", admin_root_path, method: "get" %></li>
+
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+          </ul>
+
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
+
+<%= yield %>
+</body>
+</html>
