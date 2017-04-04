@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
 
   def new
   end
@@ -8,16 +9,20 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
 
     if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
+      log_in@user
+      if params[:session][:remember_me] == '1'
+        remember @user
+      end
       redirect_to '/'
     else
+      flash.now[:danger] = 'Invalid email/password combination'
       redirect_to '/login'
     end
   end
 
   # action logout user delete auth user_id and redirect to root
   def destroy
-    session[:user_id] = nil
+    log_out
     redirect_to '/'
   end
 end
